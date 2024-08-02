@@ -53,7 +53,10 @@ class _MobileViewState extends State<MobileView> {
           child: Form(
             key: formKey,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
+                         const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Vehicle Number Registration",
@@ -66,6 +69,7 @@ class _MobileViewState extends State<MobileView> {
                     return null;
                   },
                 ),
+                         const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Enter Mobile",
@@ -78,6 +82,7 @@ class _MobileViewState extends State<MobileView> {
                     return null;
                   },
                 ),
+                         const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
                     labelText: "Email",
@@ -94,21 +99,28 @@ class _MobileViewState extends State<MobileView> {
                     return null;
                   },
                 ),
+                         const SizedBox(height: 20),
                 CheckboxListTile(
                   controlAffinity: ListTileControlAffinity.leading,
                   value: isCheck1,
                   onChanged: checkBoxToggle1,
-                  title: const Text("I agree to the terms and conditions"),
+                  title: const Text("I agree to the terms and conditions", style: TextStyle(fontSize: 12),),
                 ),
                 CheckboxListTile(
                   controlAffinity: ListTileControlAffinity.leading,
                   value: isCheck2,
                   onChanged: checkBoxToggle2,
-                  title: const Text("I want to receive updates on"),
+                  title: const Text("Asia’s Most Trusted Brand \n 2022 - General Insurance", style: TextStyle(fontSize: 12),),
                 ),
-                ElevatedButton(
-                  onPressed: handleSubmit,
-                  child: const Text("Submit"),
+
+       const SizedBox(height: 24),
+                SizedBox(
+                  width: 200,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: handleSubmit,
+                    child: const Text("Submit"),
+                  ),
                 ),
               ],
             ),

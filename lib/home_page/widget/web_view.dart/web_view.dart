@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../drawer_web.dart';
-
-import 'package:flutter/material.dart';
 
 class Webview extends StatefulWidget {
   const Webview({Key? key}) : super(key: key);
@@ -30,98 +27,100 @@ class _WebviewState extends State<Webview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blueGrey,
-      body: Column(
+      backgroundColor: Colors.orange.withOpacity(0.4),
+      body: Row(
         children: [
-       NavigationBarWeb(),
+          Expanded(
+            flex: 6,
+            child: _buildLeft(), 
+          ),
+          Flexible(
+            flex: 4,
+            child: Form(
+              key: formKey,
+              child: Container(
+                margin: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
 
-          Row(
-            children: [
-              Expanded(
-                flex: 6,
-                child: _buildLeft(), 
-              ),
-              Flexible(
-                flex: 4,
-                child: Form(
-                  key: formKey,
-                  child: Container(
-                    margin: const EdgeInsets.all(16),
-                    padding: const EdgeInsets.all(24),
-                    decoration: BoxDecoration(
-                      color: Colors.yellowAccent,
-                      borderRadius: BorderRadius.circular(16),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: "Vehicle Number Registration",
+                        hintText: "MH022",
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter some text';
+                        }
+                        return null;
+                      },
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Vehicle Number Registration",
-                            hintText: "MH022",
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter some text';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Enter Mobile",
-                            hintText: "Mobile",
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Mobile';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: "Enter Email",
-                            hintText: "Email",
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Please enter Email';
-                            }
-                            return null;
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        CheckboxListTile(
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: isCheck,
-                          onChanged: (value) {
-                            checkBoxToggle(value ?? false);
-                          },
-                          title: const Text(
-                            "I agree to the terms and conditions",
-                          ),
-                        ),
-                        CheckboxListTile(
-                          controlAffinity: ListTileControlAffinity.leading,
-                          value: isCheck,
-                          onChanged: (value) {
-                            checkBoxToggle(value ?? false);
-                          },
-                          title: const Text("I want to receive updates"),
-                        ),
-                        ElevatedButton(
-                          onPressed: handleSubmit,
-                          child: const Text("Submit"),
-                        ),
-                      ],
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: "Enter Mobile",
+                        hintText: "Mobile",
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Mobile';
+                        }
+                        return null;
+                      },
                     ),
-                  ),
+                    const SizedBox(height: 20),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: "Enter Email",
+                        hintText: "Email",
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter Email';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    CheckboxListTile(
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: isCheck,
+                      onChanged: (value) {
+                        checkBoxToggle(value ?? false);
+                      },
+                      title: const Text(
+                        "I agree to the terms and conditions",
+                      ),
+                    ),
+                    CheckboxListTile(
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: isCheck,
+                      onChanged: (value) {
+                        checkBoxToggle(value ?? false);
+                      },
+                      title: const Text("I want to get my quote and policy details on"),
+                    ),
+
+                  const Expanded(child: SizedBox()),
+                    SizedBox(
+                      width: 200,
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: handleSubmit,
+                        child: const Text("Submit", style: TextStyle(fontSize: 20),),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
         ],
       ),
@@ -162,7 +161,7 @@ Widget _buildLeft() {
                  width: 600,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: Colors.blue.withOpacity(0.5),
+                  color: Colors.grey.withOpacity(0.5),
                 ),
                 child:  const Row(
                   children: [
@@ -178,11 +177,11 @@ Widget _buildLeft() {
                      crossAxisAlignment: CrossAxisAlignment.start,
                 
                      children: [
-                       Text("Award from Consumers Asia’s Most Trusted Brand",      style: TextStyle(
+                       Text("Award from Consumers Asia's Most Trusted Brand",      style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),),
-                       Text("Asia’s Most Trusted Brand \n 2022 – General Insurance",      style: TextStyle(
+                       Text("Asia’s Most Trusted Brand \n 2022 - General Insurance",      style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Colors.white),),
